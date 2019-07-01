@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Employees v-bind:employees="employees" v-on:del-employee="deleteEmployee"/>
+    <Employees v-bind:employees="employees" v-on:del-employee="deleteEmployee" />
   </div>
 </template>
 
@@ -24,12 +24,6 @@ export default {
     deleteEmployee(id) {
       const url = `${this.apiURL}/${id}`;
       return axios.delete(url).then(res => this.employees = this.employees.filter(employee => employee.id !== id))
-      .catch(err => console.log(err));
-    },
-    editEmployee(editList) {
-      const {name, email, phone } = editList;
-      axios.post(`${this.apiURL}/${id}?name=${name}&email=${email}&phone=${phone}`)
-      .then(res => this.employees = [...this.employees, res.data])
       .catch(err => console.log(err));
     }
   },

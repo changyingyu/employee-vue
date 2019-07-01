@@ -1,10 +1,16 @@
 <template>
     <header class="header">
-        <h1>Ezra</h1>
-        <div id="nav">
-            <router-link to="/">Home</router-link> |
-            <router-link to="/add">Add Employee</router-link>
-        </div>
+
+    <a href="#default" class="logo">
+        Ezra
+    </a>
+
+    
+    <div class="header-right">
+        <router-link to="/" class="active" >Home</router-link> 
+        <router-link to="/add">Add Employee</router-link>
+    </div>
+       
     </header>
 </template>
 
@@ -15,18 +21,60 @@ export default {
 </script>
 
 <style scoped>
-    .header {
-        background: #333;
-        color: #fff;
-        text-align: center;
-        padding: 10px
-    }
 
-    .header a {
-        color: #fff;
-        padding-right: 5px;
-        text-decoration: none;
-    }
+* {box-sizing: border-box;}
 
+body { 
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header {
+  overflow: hidden;
+  background-color: #fff;
+  padding: 20px 10px;
+}
+
+.header a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px; 
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+.header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.header a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.header a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.header-right {
+  float: right;
+}
+
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  
+  .header-right {
+    float: none;
+  }
+}
     
 </style>

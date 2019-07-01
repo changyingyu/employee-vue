@@ -13,8 +13,10 @@
 
 export default {
     name: "EditEmployees",
+    props: ["id"],
     data(){
         return {
+            id: 0,
             name: '',
             email: '',
             phone: ''
@@ -24,14 +26,13 @@ export default {
         editEmployee(e){
             e.preventDefault();
             const newEmployee = {
+                id: this.id,
                 name: this.name,
                 email: this.email,
                 phone: this.phone,
             }
             this.$emit('edit-employee', newEmployee);
-            this.name = '';
-            this.email = '';
-            this.phone = '';
+            
         }
     }
 }

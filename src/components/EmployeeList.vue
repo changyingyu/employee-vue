@@ -5,7 +5,7 @@
             {{employee.name}}
              {{employee.email}}
              {{employee.phone}}
-            <EditEmployees v-on:edit-employee="editEmployee"/>
+            <EditEmployees v-on:edit-employee="editEmployee" v-bind:id="employee.id"/>
             <button @click="$emit('del-employee', employee.id)" class="del"> X</button>
             
         </p>
@@ -15,6 +15,7 @@
 
 <script>
 import EditEmployees from './EditEmployees.vue';
+import axios from 'axios';
 
 export default {
     name: "EmployeeList",
@@ -25,7 +26,15 @@ export default {
     methods: {
         markComplete() {
             this.employee.completed = !this.employee.completed;
+        },
+        editEmployee(editList) {
+            const {id, name, email, phone } = editList;
+            
+            axios.put(`https://localhost:5001/api/employees/${id}?name=${name}&email=${email}&phone=${phone}`)
+            .then(res => this.employees = [...this.employees, res.data])
+            .catch(err => console.log(err));
         }
+
     }
 }
 </script>

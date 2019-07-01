@@ -1,14 +1,12 @@
 <template>
     <header class="header">
-
     <a href="#default" class="logo">
         Ezra
     </a>
 
-    
     <div class="header-right">
-        <router-link to="/" class="active" >Home</router-link> 
-        <router-link to="/add">Add Employee</router-link>
+        <router-link to="/" v-on:click.native="isActive('home')"  v-bind:class="{'active':active}">Home</router-link> 
+        <router-link to="/add" v-on:click.native="isActive('add')" v-bind:class="{'active':!active}">Add Employee</router-link>
     </div>
        
     </header>
@@ -16,7 +14,22 @@
 
 <script>
 export default {
-    name: "Header"
+    name: "Header",
+    data() {
+        return {
+          active: true
+        }
+    },
+    methods: {
+      isActive(page) {
+        console.log(page);
+          if(page == 'add') {
+            this.active = false;
+          }else {
+            this.active = true;
+          }
+      }
+    }
 }
 </script>
 
@@ -52,14 +65,15 @@ body {
 }
 
 .header a:hover {
-  background-color: #ddd;
-  color: black;
+  background-color: black;
+  color: white;
 }
 
 .header a.active {
-  background-color: dodgerblue;
+  background-color: purple;
   color: white;
 }
+
 
 .header-right {
   float: right;

@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <Employees v-bind:employees="employees" v-on:del-employee="deleteEmployee" />
+    <div class="container">
+      <Employees v-bind:employees="employees" v-on:del-employee="deleteEmployee" />
+    </div>
   </div>
 </template>
 
@@ -36,27 +38,37 @@ export default {
 </script>
 
 <style>
-*{
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+
+    .btn {
+    margin-top: 35px;
+    background-color: white;
+    border: 1px solid purple;
+    line-height: 0;
+    font-size: 17px;
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 20px 15px;
+    border-radius: 60px;
+    color: black;
+    font-weight: 100;
+    letter-spacing: 0.01em;
+    position: relative;
+    z-index: 1;
+    }
+    .btn:hover, .btn:focus {
+    color: white;
+    background-color: purple;
+    }
+.container {
+  position: relative;
+  margin-right: auto; 
+  margin-left:  auto; 
+
+  max-width: 960px; 
+
+  padding-right: 10px; 
+  padding-left:  10px; 
 }
 
-body {
-  font-family: Arial, Helvetical, sans-serif;
-  line-height: 1.4;
-}
 
-.btn {
-  display: inline-block;
-  border: none;
-  background: #555;
-  color: #fff;
-  padding: 7px 20px;
-  cursor: pointer;
-}
-
-.btn:hover {
-  background: #666;
-}
 </style>

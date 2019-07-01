@@ -1,14 +1,10 @@
 <template>
     <div class="employee-item" v-bind:class="{'is-complete':employee.completed}">
-        <p>
-            <input type="checkbox" v-on:change="markComplete">
-            {{employee.name}}
-             {{employee.email}}
-             {{employee.phone}}
-            <EditEmployees v-on:edit-employee="editEmployee" v-bind:id="employee.id"/>
-            <button @click="$emit('del-employee', employee.id)" class="del"> X</button>
-            
-        </p>
+            <div>{{employee.email}}</div>
+            <div> <span>{{employee.name}} </span><span>{{employee.phone}}</span> </div>
+                <button @click="$emit('del-employee', employee.id)" class="item-btn"> delete  </button>
+                <button v-on:click="onChangeEdit" class="item-btn"> edit</button>
+            <EditEmployees v-on:edit-employee="editEmployee" v-bind:employee="employee" v-bind:class="{'edit-pannel':hideEdit}" />
     </div>
 </template>
 
@@ -19,6 +15,11 @@ import axios from 'axios';
 
 export default {
     name: "EmployeeList",
+    data() {
+        return {
+          hideEdit: true
+        }
+    },
     props: ["employee"],
     components: {
         EditEmployees
@@ -28,11 +29,17 @@ export default {
             this.employee.completed = !this.employee.completed;
         },
         editEmployee(editList) {
-            const {id, name, email, phone } = editList;
-            
-            axios.put(`https://localhost:5001/api/employees/${id}?name=${name}&email=${email}&phone=${phone}`)
-            .then(res => this.employees = [...this.employees, res.data])
+            const { name, phone } = editList;
+            axios.put(`https://localhost:5001/api/employees/${this.employee.id}?name=${name}&phone=${phone}`)
+            .then(res => {
+                this.employee.name = name;
+                this.employee.phone = phone;
+                this.hideEdit = true;
+            })
             .catch(err => console.log(err));
+        },
+        onChangeEdit(){
+            this.hideEdit = false;
         }
 
     }
@@ -41,8 +48,9 @@ export default {
 
 <style scoped>
     .employee-item {
-        background: #f4f4f4;
-        padding: 10px;
+        background: white;
+        padding: 15px;
+        
         /*border-bottom:  1pc #ccc dotted;*/
     }
 
@@ -59,4 +67,27 @@ export default {
         cursor: pointer;
         float: right;
     }
+    .edit-pannel {
+        position: absolute;
+        visibility: hidden;
+    }
+    .item-btn{
+        position: relative;
+        float: right;
+        background-color: purple;
+        border: none;
+        color: white;
+        padding: 8px 11px;
+        font-size: 10px;
+        cursor: pointer;
+        margin-right: 5px;
+        top: -33px;
+
+    }
+
+    .item-btn:hover {
+        background-color:  DodgerBlue;
+    }
+
+    
 </style>

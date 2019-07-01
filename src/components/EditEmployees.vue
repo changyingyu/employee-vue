@@ -1,10 +1,12 @@
 <template>
     <div>
         <form @submit="editEmployee">
-            <input type="text" v-model="name" name="name" placeholder="name">
-            <input type="text" v-model="email" name="email" placeholder="email">
-            <input type="text" v-model="phone" name="phone" placeholder="phone">
+            <input type="text" v-model="name" name="name" placeholder="name" required >
+            <input type="text" v-model="phone" name="phone" placeholder="phone" v-on:change="isPhoneValid" required>
             <input type="submit" value="Submit" class="btn">
+            <div class="error-span" >
+				<div v-bind:class="{'error-hide':!phoneError}" >please enter valid phone</div>
+			</div>
         </form>
     </div>
 </template>
@@ -13,34 +15,55 @@
 
 export default {
     name: "EditEmployees",
-    props: ["id"],
+    props: ["employee"],
     data(){
         return {
-            id: 0,
             name: '',
             email: '',
-            phone: ''
+            phone: '',
+            phoneRe: /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/,
+            phoneError: false,
+
         }
     },
     methods: {
         editEmployee(e){
             e.preventDefault();
             const newEmployee = {
-                id: this.id,
                 name: this.name,
-                email: this.email,
                 phone: this.phone,
             }
             this.$emit('edit-employee', newEmployee);
-            
+          
+        },
+        isPhoneValid(){
+            if (this.phoneRe.test(this.phone)) {
+                this.phoneError = false;
+            } else {
+                this.phoneError = true;
+            }
         }
     }
 }
 </script>
 
 <style scoped>
+
+    .error-span{
+        padding-left: 15px;
+        color: red;
+        
+    }
     form {
-        display:flex;
+        position: relative;
+        display: inline-block;
+        box-sizing: border-box;
+        background-color: white;
+        left: 30%;
+        -moz-transform: translate(-50%, 0);
+        -ms-transform: translate(-50%, 0);
+        -webkit-transform: translate(-50%, 0);
+        transform: translate(-50%, 0);
     }
 
     input[type="text"]{
@@ -50,5 +73,15 @@ export default {
 
     input[type="submit"] {
         flex: 2;
+    }
+    .error-hide {
+        position: absolute;
+        visibility: hidden;
+    }
+    .btn {
+        padding: 10px 14px;
+        font-size: 12px;
+        border-radius: 0%;
+        
     }
 </style>

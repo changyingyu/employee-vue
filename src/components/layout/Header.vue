@@ -1,43 +1,44 @@
 <template>
-    <header class="header">
-    <a href="#default" class="logo">
-        Ezra
-    </a>
-
+  <header class="header">
+    <a href="#default" class="logo">Ezra</a>
     <div class="header-right">
-        <router-link to="/" v-on:click.native="isActive('home')"  v-bind:class="{'active':active}">Home</router-link> 
-        <router-link to="/add" v-on:click.native="isActive('add')" v-bind:class="{'active':!active}">Add Employee</router-link>
+      <router-link to="/" v-on:click.native="isActive('home')" v-bind:class="{'active':active}">Home</router-link>
+      <router-link
+        to="/add"
+        v-on:click.native="isActive('add')"
+        v-bind:class="{'active':!active}"
+      >Add Employee</router-link>
     </div>
-       
-    </header>
+  </header>
 </template>
 
 <script>
 export default {
-    name: "Header",
-    data() {
-        return {
-          active: true
-        }
-    },
-    methods: {
-      isActive(page) {
-        console.log(page);
-          if(page == 'add') {
-            this.active = false;
-          }else {
-            this.active = true;
-          }
+  name: "Header",
+  data() {
+    return {
+      active: true
+    };
+  },
+  methods: {
+    isActive(page) {
+      console.log(page);
+      if (page == "add") {
+        this.active = false;
+      } else {
+        this.active = true;
       }
     }
-}
+  }
+};
 </script>
 
 <style scoped>
+* {
+  box-sizing: border-box;
+}
 
-* {box-sizing: border-box;}
-
-body { 
+body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -54,7 +55,7 @@ body {
   text-align: center;
   padding: 12px;
   text-decoration: none;
-  font-size: 18px; 
+  font-size: 18px;
   line-height: 25px;
   border-radius: 4px;
 }
@@ -74,7 +75,6 @@ body {
   color: white;
 }
 
-
 .header-right {
   float: right;
 }
@@ -85,10 +85,9 @@ body {
     display: block;
     text-align: left;
   }
-  
+
   .header-right {
     float: none;
   }
 }
-    
 </style>

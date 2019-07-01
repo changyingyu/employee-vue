@@ -1,27 +1,26 @@
 <template>
   <div id="app">
     <Header />
-     <img src="./assets/banner.jpg" class="image-banner">
-    <router-view/>
+    <img src="./assets/banner.jpg" class="image-banner" />
+    <router-view />
     <Footer />
   </div>
 </template>
 
 <script>
-import Header from './components/layout/Header.vue'
-import Footer from './components/layout/Footer.vue'
+import Header from "./components/layout/Header.vue";
+import Footer from "./components/layout/Footer.vue";
 export default {
-  name: 'app',
+  name: "app",
   components: {
     Header,
     Footer
   }
-}
+};
 </script>
 
 <style>
-
-*{
+* {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -30,7 +29,7 @@ export default {
 body {
   font-family: Arial, Helvetical, sans-serif;
   line-height: 1.4;
-  background-color:#fcf5fc;
+  background-color: #fcf5fc;
 }
 
 .btn {
@@ -46,11 +45,11 @@ body {
   background: #666;
 }
 
-.image-banner{
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    width: 100%;
-    z-index: -1;
+.image-banner {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  width: 100%;
+  z-index: -1;
 }
 </style>

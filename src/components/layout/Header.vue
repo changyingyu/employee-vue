@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <a href="#default" class="logo">Ezra</a>
+    <a href="https://ezra.com/" class="logo">Ezra</a>
     <div class="header-right">
       <router-link to="/" v-on:click.native="isActive('home')" v-bind:class="{'active':active}">Home</router-link>
       <router-link
@@ -21,8 +21,8 @@ export default {
     };
   },
   methods: {
+    // update header focus link
     isActive(page) {
-      console.log(page);
       if (page == "add") {
         this.active = false;
       } else {

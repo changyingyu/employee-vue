@@ -23,6 +23,7 @@ export default {
   },
   methods: {
     deleteEmployee(id) {
+      //delete employee with parameter id
       const url = `${this.apiURL}/${id}`;
       return axios
         .delete(url)
@@ -36,6 +37,7 @@ export default {
     }
   },
   created() {
+    // pull/fetch data
     axios
       .get(this.apiURL)
       .then(res => (this.employees = res.data))

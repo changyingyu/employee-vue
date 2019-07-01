@@ -41,6 +41,7 @@ export default {
       this.$emit("edit-employee", newEmployee);
     },
     isPhoneValid() {
+      //check if phone is valid
       if (this.phoneRe.test(this.phone)) {
         this.phoneError = false;
       } else {

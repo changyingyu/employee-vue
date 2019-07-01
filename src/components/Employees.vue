@@ -33,7 +33,6 @@ export default {
   min-width: 500px;
   box-sizing: border-box;
   padding: 30px 25px;
-  /*padding-top: 180px; */
   background-color: white;
   border: 1px solid purple;
   border-radius: 40px;

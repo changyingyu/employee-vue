@@ -1,5 +1,5 @@
 <template>
-  <div class="employee-item" v-bind:class="{'is-complete':employee.completed}">
+  <div class="employee-item">
     <div>{{employee.email}}</div>
     <div>
       <span>{{employee.name}}</span>
@@ -32,24 +32,25 @@ export default {
     EditEmployees
   },
   methods: {
-    markComplete() {
-      this.employee.completed = !this.employee.completed;
-    },
     editEmployee(editList) {
+      //update employee info
       const { name, phone } = editList;
       axios
         .put(
           `https://localhost:5001/api/employees/${this.employee.id}?name=${name}&phone=${phone}`
         )
         .then(res => {
+          // update latest changed name and phone
           this.employee.name = name;
           this.employee.phone = phone;
           this.hideEdit = true;
+          //hide edit form 
         })
         .catch(err => console.log(err));
     },
     onChangeEdit() {
       this.hideEdit = false;
+      //show edit
     }
   }
 };
@@ -59,8 +60,6 @@ export default {
 .employee-item {
   background: white;
   padding: 15px;
-
-  /*border-bottom:  1pc #ccc dotted;*/
 }
 
 .is-complete {

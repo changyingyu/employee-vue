@@ -64,9 +64,9 @@ export default {
     };
   },
   methods: {
+    // post name email and phone to local server
     addEmployee(e) {
       e.preventDefault();
-
       axios
         .post(
           `https://localhost:5001/api/employees?id=${uuid.v4()}name=${
@@ -77,6 +77,7 @@ export default {
         .catch(err => console.log(err));
     },
     isEmailValid() {
+      //chekc if email is valid
       if (this.emailRe.test(this.email)) {
         this.emailError = false;
         this.success = true;
@@ -86,6 +87,7 @@ export default {
       }
     },
     isPhoneValid() {
+      //check if phone is valid
       if (this.phoneRe.test(this.phone)) {
         this.phoneError = false;
         this.success = true;

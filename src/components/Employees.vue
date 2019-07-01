@@ -24,8 +24,8 @@ export default {
         position: relative;
         margin-top: 90px;
         display: inline-block;
-        max-width: 800px;
-        min-width: 800px;
+        max-width: 500px;
+        min-width: 500px;
         box-sizing: border-box;
         padding: 30px 25px;
         /*padding-top: 180px; */

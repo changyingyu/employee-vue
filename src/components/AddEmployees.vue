@@ -160,5 +160,20 @@ export default {
         position: relative;
     }
 
-  
+  .btn {
+      margin-top: 35px;
+      background-color: white;
+      border: 1px solid purple;
+      line-height: 0;
+      font-size: 17px;
+      display: inline-block;
+      box-sizing: border-box;
+      padding: 20px 15px;
+      border-radius: 60px;
+      color: black;
+      font-weight: 100;
+      letter-spacing: 0.01em;
+      position: relative;
+      z-index: 1;
+    }
 </style>

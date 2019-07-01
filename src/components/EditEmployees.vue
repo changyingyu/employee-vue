@@ -59,7 +59,7 @@ export default {
         display: inline-block;
         box-sizing: border-box;
         background-color: white;
-        left: 30%;
+        left: 50%;
         -moz-transform: translate(-50%, 0);
         -ms-transform: translate(-50%, 0);
         -webkit-transform: translate(-50%, 0);
